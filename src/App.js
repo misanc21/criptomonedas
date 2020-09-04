@@ -6,15 +6,16 @@ import imagen from './cryptomonedas.png'
 
 import Formulario from './components/Formulario'
 import Cotizacion from './components/Cotizacion'
+import Spinner from './components/Spinner'
 
 /*Styled components*/ 
 const Contenedor = styled.div `
   max-width: 900px;
   margin:0 auto;
 
-  @media(min-width:992px){
+  @media(min-width:692px){
     display:grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
   }
 `
@@ -47,14 +48,19 @@ function App() {
   const [moneda, setMoneda] = useState('')
   const [cripto, setCripto] = useState('')
   const [resultado, setResultado] = useState([])
-
+  const [cargando, setCargando] = useState (false)
   
   useEffect(() => {
     if (!moneda) return
 
     const cotizarCriptomoneda = async () => {
       const res = await axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${cripto}&tsyms=${moneda}`)
-      setResultado(res.data.DISPLAY[cripto][moneda])
+
+      setCargando(true)
+      setTimeout(() => {
+        setCargando(false)
+        setResultado(res.data.DISPLAY[cripto][moneda])
+      }, 2000);
     }
     cotizarCriptomoneda();
   }, [moneda, cripto])
@@ -70,9 +76,11 @@ function App() {
           setMoneda = {setMoneda}
           setCripto = {setCripto}
         />
-        <Cotizacion
-          resultado = {resultado}
-        />
+      </div>
+      <div> 
+        {
+          cargando ? <Spinner/> : <Cotizacion resultado = {resultado}/>
+        }
       </div>
     </Contenedor>
   );

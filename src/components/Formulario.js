@@ -9,6 +9,7 @@ import Error from './Error';
 
 const Button = styled.button`
     margin-top: 20px;
+    margin-bottom: 1rem;
     font-weight: bold;
     font-size: 20px;
     padding: 10px;
