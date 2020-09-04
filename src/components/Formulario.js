@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from '@emotion/styled'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 
 import useMoneda from '../hooks/useMoneda'
 import useCriptomoneda from '../hooks/useCriptomoneda';
@@ -72,6 +73,11 @@ const Formulario = ({setMoneda, setCripto}) => {
         </form>
 )
 
+}
+
+Formulario.proTypes = {
+    setMoneda: PropTypes.func.isRequired,
+    setCripto: PropTypes.func.isRequired
 }
 
 export default Formulario;

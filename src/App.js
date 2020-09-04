@@ -47,7 +47,7 @@ function App() {
   /*States */
   const [moneda, setMoneda] = useState('')
   const [cripto, setCripto] = useState('')
-  const [resultado, setResultado] = useState([])
+  const [resultado, setResultado] = useState({})
   const [cargando, setCargando] = useState (false)
   
   useEffect(() => {
