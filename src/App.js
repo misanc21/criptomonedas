@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from '@emotion/styled'
 
 import imagen from './cryptomonedas.png'
@@ -40,7 +40,12 @@ const Heading = styled.h1`
   }
 `
 
+
 function App() {
+  /*States */
+  const [moneda, setMoneda] = useState('')
+  const [cripto, setCripto] = useState('')
+
   return (
     <Contenedor>
       <div>
@@ -48,7 +53,10 @@ function App() {
       </div>
       <div>
         <Heading>Cotizador de cryptomonedas</Heading>
-        <Formulario/>
+        <Formulario
+          setMoneda = {setMoneda}
+          setCripto = {setCripto}
+        />
       </div>
     </Contenedor>
   );

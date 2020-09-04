@@ -25,7 +25,7 @@ const Button = styled.button`
     }
 `
 
-const Formulario = () => {
+const Formulario = ({setMoneda, setCripto}) => {
 
     const [listaCripto, setListaCripto] = useState([])
     const [error, setError] = useState(false)
@@ -37,7 +37,7 @@ const Formulario = () => {
         {codigo: 'GBP', nombre:'Libra esterlina'}
     ]
 
-    const [ moneda, SeleccionarMoneda] = useMoneda('Elige una moneda', '', monedasForm)
+    const [moneda, SeleccionarMoneda] = useMoneda('Elige una moneda', '', monedasForm)
     const [criptomoneda, SelectCripto] = useCriptomoneda ('Elige criptomoneda','', listaCripto)
 
     const consultarApi = async () => {
@@ -53,6 +53,8 @@ const Formulario = () => {
             return
         }
         setError(false)
+        setMoneda(moneda)
+        setCripto(criptomoneda)
 
     }
 
