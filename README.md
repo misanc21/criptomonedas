@@ -1,4 +1,4 @@
-# Buscador de imagenes sin copyright
+# Cotizador de criptomonedas
 _Proyecto para buscar precio de criptomonedas por medio de API_ 
 
 ## Comenzando 🚀
